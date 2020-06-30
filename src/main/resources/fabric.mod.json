@@ -1,29 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "etadditions",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "EndTech additions",
+  "description": "Mod which adds small server-side features for EndTech.",
   "authors": [
-    "Me!"
+    "samipourquoi"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/samipourquoi/endtech-additions"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/etadditions/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "io.github.samipourquoi.etadditions.ExampleMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "etadditions.mixins.json"
   ],
 
   "depends": {
