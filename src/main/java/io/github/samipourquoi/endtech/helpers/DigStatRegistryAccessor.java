@@ -12,7 +12,7 @@ public class DigStatRegistryAccessor {
         Lifecycle.stable()
     );
 
-    public static Registry<Identifier> getDigStat() {
+    public static Registry<Identifier> getDigStatRegistry() {
         return DIG_STAT;
     }
 }

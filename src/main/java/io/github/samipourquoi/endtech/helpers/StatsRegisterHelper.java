@@ -9,7 +9,7 @@ public class StatsRegisterHelper {
 
     public static Identifier register(String id, StatFormatter statFormatter, final StatType<Identifier> statType) {
         Identifier identifier = new Identifier(id);
-        Registry.register(DigStatRegistryAccessor.getDigStat(), (String) id, identifier);
+        Registry.register(DigStatRegistryAccessor.getDigStatRegistry(), (String) id, identifier);
         statType.getOrCreateStat(identifier, statFormatter);
         return identifier;
     }

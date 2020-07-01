@@ -31,7 +31,7 @@ public class MixinStats {
     };
 
     static {
-        DIG = registerType("endtech:dig", DigStatRegistryAccessor.getDigStat());
+        DIG = registerType("endtech:dig", DigStatRegistryAccessor.getDigStatRegistry());
         /*==================================================*/
         ALL = StatsRegisterHelper.register("endtech:all", StatFormatter.DEFAULT, DIG);
         PICKS = StatsRegisterHelper.register("endtech:picks", StatFormatter.DEFAULT, DIG);
