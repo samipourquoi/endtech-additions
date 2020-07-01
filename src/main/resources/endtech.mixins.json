@@ -1,9 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "io.github.samipourquoi.etadditions.mixin",
+  "package": "io.github.samipourquoi.endtech.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinBlock",
+    "MixinStats"
   ],
   "client": [
   ],
