@@ -5,8 +5,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.util.registry.SimpleRegistry;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mutable;
 
 public class DigStatRegistryAccessor {
     private static Registry<Identifier> DIG_STAT = new SimpleRegistry<Identifier>(
