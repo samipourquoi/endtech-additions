@@ -34,19 +34,17 @@ public class MixinTradeOffer implements PerfectTradeHelper {
         ItemStack sellItemStack = mixinThis.getSellItem();
         Item sellItem = sellItemStack.getItem();
 
-        switch (sellItem.getClass().getSimpleName()) {
-            case "EnchantedBookItem":
-                // Get the first (and only) enchantment of the sell item
-                Enchantment enchantment = (Enchantment) EnchantmentHelper.get(sellItemStack).keySet().toArray()[0];
+        if (sellItem instanceof EnchantedBookItem) {
+            // Get the first (and only) enchantment of the sell item
+            Enchantment enchantment = (Enchantment) EnchantmentHelper.get(sellItemStack).keySet().toArray()[0];
 
-                int level = EnchantmentHelper.get(sellItemStack).get(enchantment);
-                int maxLevel = enchantment.getMaxLevel();
-                int treasureMultiplier = enchantment.isTreasure() ? 2 : 1;
-                int perfectPrice = (2 + 3 * level) * treasureMultiplier;
+            int level = EnchantmentHelper.get(sellItemStack).get(enchantment);
+            int maxLevel = enchantment.getMaxLevel();
+            int treasureMultiplier = enchantment.isTreasure() ? 2 : 1;
+            int perfectPrice = (2 + 3 * level) * treasureMultiplier;
 
-                if (mixinThis.getOriginalFirstBuyItem().getCount() == perfectPrice && level == maxLevel)
-                    return true;
-                break;
+            if (mixinThis.getOriginalFirstBuyItem().getCount() == perfectPrice && level == maxLevel)
+                return true;
         }
 
 
