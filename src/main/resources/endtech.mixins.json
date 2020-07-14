@@ -8,6 +8,8 @@
     "MixinStats"
   ],
   "client": [
+    "MixinMerchantScreen",
+    "MixinTradeOffer"
   ],
   "injectors": {
     "defaultRequire": 1
