@@ -1,7 +1,6 @@
 package io.github.samipourquoi.endtech.mixin;
 
 import io.github.samipourquoi.endtech.helpers.DigCriteriasAccessor;
-import io.github.samipourquoi.endtech.helpers.DigStatRegistryAccessor;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.network.packet.s2c.play.StatisticsS2CPacket;
@@ -10,7 +9,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.ServerStatHandler;
 import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatHandler;
-import org.apache.logging.log4j.core.jmx.Server;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
