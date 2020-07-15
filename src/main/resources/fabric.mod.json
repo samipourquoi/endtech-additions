@@ -3,8 +3,8 @@
   "id": "endtech",
   "version": "${version}",
 
-  "name": "EndTech additions",
-  "description": "Mod which adds small server-side features for EndTech.",
+  "name": "EndTech Additions",
+  "description": "Mod which adds small features for both the server and the client. Made for EndTech.",
   "authors": [
     "samipourquoi"
   ],
