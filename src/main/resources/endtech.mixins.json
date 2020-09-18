@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinBlock",
-    "MixingStats",
+    "MixinStats",
     "MixinServerStatHandler"
   ],
   "client": [
