@@ -1,7 +1,6 @@
 package io.github.samipourquoi.endtech.mixin;
 
 import io.github.samipourquoi.endtech.helpers.DigCriteriasAccessor;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
