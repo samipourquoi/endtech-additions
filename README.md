@@ -11,6 +11,8 @@ These will count every block mined with these tools, no matter the type. `…all
 An easy way to see if a trade is perfect. If it is, it will add a yellow arrow instead of the normal white one. Only supports books
 at the moment.
 
+![perfect trades](https://imgur.com/lbsjQ54.png)
+
 ## Endbot Autocomplete
 Autocompletes [Endbot](https://github.com/samipourquoi/endbot) commands, and includes
 the [Every Scoreboard](https://github.com/samipourquoi/every-scoreboard) naming scheme.
