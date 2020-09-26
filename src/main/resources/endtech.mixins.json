@@ -5,17 +5,11 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinBlock",
-    "MixinStats",
-    "MixinServerStatHandler",
-
-    "MixinServerPlayNetworkHandler",
-    "MixinCustomPayloadC2SPacket"
+    "MixinStats"
   ],
   "client": [
     "MixinMerchantScreen",
     "MixinTradeOffer",
-
-    "MixinClientPlayNetworkHandler",
     "MixinCommandSuggestor"
   ],
   "injectors": {
