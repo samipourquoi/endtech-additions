@@ -6,11 +6,17 @@
   "mixins": [
     "MixinBlock",
     "MixinStats",
-    "MixinServerStatHandler"
+    "MixinServerStatHandler",
+
+    "MixinServerPlayNetworkHandler",
+    "MixinCustomPayloadC2SPacket"
   ],
   "client": [
     "MixinMerchantScreen",
-    "MixinTradeOffer"
+    "MixinTradeOffer",
+
+    "MixinClientPlayNetworkHandler",
+    "MixinCommandSuggestor"
   ],
   "injectors": {
     "defaultRequire": 1
