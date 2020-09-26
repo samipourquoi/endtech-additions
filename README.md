@@ -15,4 +15,4 @@ at the moment.
 Autocompletes [Endbot](https://github.com/samipourquoi/endbot) commands, and includes
 the [Every Scoreboard](https://github.com/samipourquoi/every-scoreboard) naming scheme.
 
-![autocomplete](assets/autocomplete.gif)
+![autocomplete](https://ibb.co/hHs3pKY)
