@@ -11,7 +11,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.CommandSuggestor;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.server.command.CommandSource;
+import net.minecraft.command.CommandSource;
 import net.minecraft.text.OrderedText;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,7 +30,7 @@ public abstract class MixinCommandSuggestor {
     @Shadow private boolean completingSuggestions;
     @Shadow private CommandSuggestor.SuggestionWindow window;
     @Shadow @Final private List<OrderedText> messages;
-    @Shadow @Final private boolean slashRequired;
+    @Shadow @Final private boolean slashOptional;
     @Shadow @Final private boolean suggestingWhenEmpty;
     @Shadow private CompletableFuture<Suggestions> pendingSuggestions;
     @Shadow protected abstract void show();
@@ -67,7 +67,7 @@ public abstract class MixinCommandSuggestor {
             stringReader.skip();
         }
 
-        boolean isCommand = this.slashRequired || vanillaCommand || endbotCommand;
+        boolean isCommand = this.slashOptional || vanillaCommand || endbotCommand;
         int i = this.textField.getCursor();
         int j;
         if (isCommand) {
