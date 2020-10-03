@@ -47,7 +47,7 @@ public class MixinBlock {
                 );
             }
 
-            if (toolName.contains("axe")) {
+            if (toolName.contains("_axe")) {
                 player.incrementStat(
                         DigCriteriasAccessor
                                 .getDig()
