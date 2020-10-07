@@ -1,3 +1,9 @@
 {
-    "arguments.everyscoreboard.incorrect_prefix": "Incorrect prefix: %s<--[HERE]"
+  "stat.minecraft.dig": "Total dig",
+  "stat.minecraft.picks": "Total pick uses",
+  "stat.minecraft.shovels": "Total shovel uses",
+  "stat.minecraft.axes": "Total axe uses",
+  "stat.minecraft.hoes": "Total hoe uses",
+
+  "arguments.everyscoreboard.incorrect_prefix": "Incorrect prefix: %s<--[HERE]"
 }
