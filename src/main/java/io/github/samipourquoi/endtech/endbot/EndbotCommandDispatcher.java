@@ -11,5 +11,6 @@ public class EndbotCommandDispatcher {
     static {
         ScoreboardEndbotCommand.register(INSTANCE);
         HelpEndbotCommand.register(INSTANCE);
+        PresetsEndbotCommand.register(INSTANCE);
     }
 }
