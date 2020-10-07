@@ -73,10 +73,10 @@ public abstract class MixinCommandSuggestor {
         if (isCommand) {
             CommandDispatcher<CommandSource> commandDispatcher;
 
-            if (vanillaCommand) {
-                commandDispatcher = this.client.player.networkHandler.getCommandDispatcher();
-            } else {
+            if (endbotCommand) {
                 commandDispatcher = EndbotCommandDispatcher.INSTANCE;
+            } else {
+                commandDispatcher = this.client.player.networkHandler.getCommandDispatcher();
             }
 
             if (this.parse == null) {
