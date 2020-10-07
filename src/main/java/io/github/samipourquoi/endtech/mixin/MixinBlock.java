@@ -1,15 +1,13 @@
 package io.github.samipourquoi.endtech.mixin;
 
-import io.github.samipourquoi.endtech.helpers.DigCriteriasAccessor;
+import io.github.samipourquoi.endtech.helpers.StatsAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,39 +18,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinBlock {
     @Inject(method = "afterBreak", at = @At("HEAD"))
     private void incrementDigScoreboards(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack stack, CallbackInfo info) {
-        if (!((Block)(Object)this).equals(Blocks.ICE)) {
-            player.incrementStat(
-                    DigCriteriasAccessor
-                            .getDig()
-                            .getOrCreateStat(new Identifier("endtech", "all"))
-            );
+        // stat farms!
+        if (!this.equals(Blocks.ICE)) {
+            player.incrementStat(StatsAccessor.DIG);
 
-            String toolName = Registry.ITEM
-                    .getId(player.getMainHandStack().getItem())
-                    .getPath();
-
-            if (toolName.contains("pickaxe")) {
-                player.incrementStat(
-                        DigCriteriasAccessor
-                                .getDig()
-                                .getOrCreateStat(new Identifier("endtech", "picks"))
-                );
-            }
-
-            if (toolName.contains("shovel")) {
-                player.incrementStat(
-                        DigCriteriasAccessor
-                                .getDig()
-                                .getOrCreateStat(new Identifier("endtech", "shovels"))
-                );
-            }
-
-            if (toolName.contains("axe")) {
-                player.incrementStat(
-                        DigCriteriasAccessor
-                                .getDig()
-                                .getOrCreateStat(new Identifier("endtech", "axes"))
-                );
+            if (stack.getItem() instanceof PickaxeItem) {
+                player.incrementStat(StatsAccessor.PICKS);
+            } else if (stack.getItem() instanceof AxeItem) {
+                player.incrementStat(StatsAccessor.AXES);
+            } else if (stack.getItem() instanceof ShovelItem) {
+                player.incrementStat(StatsAccessor.SHOVELS);
+            } else if (stack.getItem() instanceof HoeItem) {
+                player.incrementStat(StatsAccessor.HOES);
             }
         }
     }
