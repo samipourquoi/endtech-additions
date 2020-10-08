@@ -33,7 +33,7 @@ public abstract class MixinBlock {
     @Shadow protected abstract Block asBlock();
 
     @Inject(method = "afterBreak", at = @At("HEAD"))
-    private void incrementDigScoreboards(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack stack, CallbackInfo info) {
+    private void incrementMinedStats(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack stack, CallbackInfo info) {
         // stat farms!
         if (!this.equals(Blocks.ICE)) {
             player.incrementStat(StatsAccessor.DIG);
@@ -58,7 +58,7 @@ public abstract class MixinBlock {
     }
 
     @Inject(method = "onPlaced", at = @At("HEAD"))
-    private void incrementCustomObjectives(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
+    private void incrementUsedStats(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
         //noinspection MethodCallSideOnly
         Collection<Identifier> tag = BlockTags.getTagGroup().getTagsFor((Block)(Object) this);
         for (Identifier keys: tag) {
