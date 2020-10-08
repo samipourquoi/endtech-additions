@@ -65,12 +65,16 @@ public abstract class MixinStats {
         // Registers the stats for the tags (#wool, #logs, ...)
         List<? extends Tag.Identified<Block>> blockTags = BlockTags.getRequiredTags();
         blockTags.forEach(blockIdentified -> {
-            String path = "mined_" + blockIdentified.getId().getPath();
-            Identifier id = new Identifier(path);
-            Registry.register(Registry.CUSTOM_STAT, path, id);
-            CUSTOM.getOrCreateStat(id);
-            CUSTOM_TAGS.put(path, id);
+            registerTagStats("mined_" + blockIdentified.getId().getPath());
+            registerTagStats("used_" + blockIdentified.getId().getPath());
         });
         StatsAccessor.CUSTOM_TAGS = CUSTOM_TAGS;
+    }
+
+    private static void registerTagStats(String path) {
+        Identifier id = new Identifier(path);
+        Registry.register(Registry.CUSTOM_STAT, path, id);
+        CUSTOM.getOrCreateStat(id);
+        CUSTOM_TAGS.put(path, id);
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.state.StateManager;
@@ -53,6 +54,18 @@ public abstract class MixinBlock {
         for (Identifier keys: tag) {
             Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("mined_" + keys.getPath());
             player.incrementStat(statTagID);
+        }
+    }
+
+    @Inject(method = "onPlaced", at = @At("HEAD"))
+    private void incrementCustomObjectives(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
+        //noinspection MethodCallSideOnly
+        Collection<Identifier> tag = BlockTags.getTagGroup().getTagsFor((Block)(Object) this);
+        for (Identifier keys: tag) {
+            Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("used_" + keys.getPath());
+            if (placer instanceof PlayerEntity) {
+                ((PlayerEntity) placer).incrementStat(statTagID);
+            }
         }
     }
 }
