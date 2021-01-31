@@ -30,7 +30,7 @@ public class MixinMerchantScreen extends Screen {
      * @reason Shows a yellow arrow instead of a white one for perfect trades.
      */
     @Overwrite
-    private void method_20223(MatrixStack matrixStack, TradeOffer tradeOffer, int i, int j) {
+    private void renderArrow(MatrixStack matrixStack, TradeOffer tradeOffer, int i, int j) {
         RenderSystem.enableBlend();
 
         if (((PerfectTradeHelper) tradeOffer).isPerfectTrade()) {
