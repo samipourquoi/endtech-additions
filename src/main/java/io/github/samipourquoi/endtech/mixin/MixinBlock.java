@@ -1,5 +1,6 @@
 package io.github.samipourquoi.endtech.mixin;
 
+import io.github.samipourquoi.endtech.helpers.GetTagsForHelper;
 import io.github.samipourquoi.endtech.helpers.StatsAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -11,6 +12,7 @@ import net.minecraft.item.*;
 import net.minecraft.state.StateManager;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -50,7 +52,8 @@ public abstract class MixinBlock {
         }
 
         //noinspection MethodCallSideOnly
-        Collection<Identifier> tag = BlockTags.getTagGroup().getTagsFor((Block)(Object) this);
+        TagGroup<Block> tagGroup = BlockTags.getTagGroup();
+        Collection<Identifier> tag = GetTagsForHelper.getTagsForTagGroup(tagGroup, (Block)(Object) this);
         for (Identifier keys: tag) {
             Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("mined_" + keys.getPath());
             player.incrementStat(statTagID);
@@ -60,7 +63,8 @@ public abstract class MixinBlock {
     @Inject(method = "onPlaced", at = @At("HEAD"))
     private void incrementUsedStats(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
         //noinspection MethodCallSideOnly
-        Collection<Identifier> tag = BlockTags.getTagGroup().getTagsFor((Block)(Object) this);
+        TagGroup<Block> tagGroup = BlockTags.getTagGroup();
+        Collection<Identifier> tag = GetTagsForHelper.getTagsForTagGroup(tagGroup, (Block)(Object) this);
         for (Identifier keys: tag) {
             Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("used_" + keys.getPath());
             if (placer instanceof PlayerEntity) {

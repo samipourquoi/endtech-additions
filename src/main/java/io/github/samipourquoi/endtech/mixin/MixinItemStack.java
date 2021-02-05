@@ -1,11 +1,13 @@
 package io.github.samipourquoi.endtech.mixin;
 
+import io.github.samipourquoi.endtech.helpers.GetTagsForHelper;
 import io.github.samipourquoi.endtech.helpers.StatsAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.TagGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
@@ -29,7 +31,8 @@ public abstract class MixinItemStack {
         Block block = Registry.BLOCK.get(itemID);
 
         //noinspection MethodCallSideOnly
-        Collection<Identifier> tag = BlockTags.getTagGroup().getTagsFor(block);
+        TagGroup<Block> tagGroup = BlockTags.getTagGroup();
+        Collection<Identifier> tag = GetTagsForHelper.getTagsForTagGroup(tagGroup, (Block)(Object) this);
         for (Identifier key: tag) {
             Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("crafted_" + key.getPath());
             player.increaseStat(statTagID, amount);
