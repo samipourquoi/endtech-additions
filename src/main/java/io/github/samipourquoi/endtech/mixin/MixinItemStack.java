@@ -32,7 +32,7 @@ public abstract class MixinItemStack {
 
         //noinspection MethodCallSideOnly
         TagGroup<Block> tagGroup = BlockTags.getTagGroup();
-        Collection<Identifier> tag = GetTagsForHelper.getTagsForTagGroup(tagGroup, (Block)(Object) this);
+        Collection<Identifier> tag = GetTagsForHelper.getTagsForTagGroup(tagGroup, (Block)(Object) block);
         for (Identifier key: tag) {
             Identifier statTagID = StatsAccessor.CUSTOM_TAGS.get("crafted_" + key.getPath());
             player.increaseStat(statTagID, amount);
