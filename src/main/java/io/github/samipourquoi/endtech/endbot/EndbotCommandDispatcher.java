@@ -13,5 +13,6 @@ public class EndbotCommandDispatcher {
         HelpEndbotCommand.register(INSTANCE);
         PresetsEndbotCommand.register(INSTANCE);
         PosEndBotCommand.register(INSTANCE);
+        BackupEndbotCommand.register(INSTANCE);
     }
 }
