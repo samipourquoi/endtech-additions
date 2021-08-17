@@ -9,7 +9,8 @@
     "MixinItemStack",
     "MixinScoreboardTotal",
     "MixinCommandManager",
-    "MixinMinecraftServer"
+    "MixinMinecraftServer",
+    "MixinServerStatHandler"
   ],
   "client": [
     "MixinMerchantScreen",
