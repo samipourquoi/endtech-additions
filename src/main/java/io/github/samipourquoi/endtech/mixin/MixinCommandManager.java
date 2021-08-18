@@ -1,7 +1,7 @@
 package io.github.samipourquoi.endtech.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.samipourquoi.endtech.helpers.RulesCommand;
+import io.github.samipourquoi.endtech.ETAdditionsCommand;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import org.spongepowered.asm.mixin.Final;
@@ -16,7 +16,5 @@ public class MixinCommandManager {
     @Shadow @Final private CommandDispatcher<ServerCommandSource> dispatcher;
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void onRegister(CallbackInfo ci) {
-        RulesCommand.register(this.dispatcher);
-    }
+    private void onRegister(CallbackInfo ci) { ETAdditionsCommand.register(this.dispatcher); }
 }

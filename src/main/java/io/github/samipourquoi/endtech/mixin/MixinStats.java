@@ -7,15 +7,12 @@ import net.minecraft.stat.StatType;
 import net.minecraft.stat.Stats;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
-import net.minecraft.tag.TagGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.Inject;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +33,6 @@ public abstract class MixinStats {
         return null;
     }
 
-    @Shadow @Final public static StatType<Block> MINED;
     @Shadow @Final public static StatType<Identifier> CUSTOM;
     private static final Identifier DIG;
     private static final Identifier PICKS;
@@ -65,7 +61,6 @@ public abstract class MixinStats {
         // Registers the stats for the tags (#wool, #logs, ...)
         List<? extends Tag.Identified<Block>> blockTags = BlockTags.getRequiredTags();
         blockTags.forEach(blockIdentified -> {
-            System.out.println(blockIdentified.getId().getPath());
             registerTagStats("mined_" + blockIdentified.getId().getPath());
             registerTagStats("used_" + blockIdentified.getId().getPath());
             registerTagStats("crafted_" + blockIdentified.getId().getPath());

@@ -1,6 +1,6 @@
 package io.github.samipourquoi.endtech.mixin;
 
-import io.github.samipourquoi.endtech.helpers.RuleSettings;
+import io.github.samipourquoi.endtech.ETAdditionsSettings;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.ScoreboardPlayerUpdateS2CPacket;
 import net.minecraft.scoreboard.Scoreboard;
@@ -24,13 +24,13 @@ public class MixinScoreboardTotal extends Scoreboard {
 
     @Inject(method = "updateScore", at = @At("TAIL"))
     public void updateScoreboardTotal(ScoreboardPlayerScore score, CallbackInfo ci) {
-        if (RuleSettings.scoreboardTotals)
+        if (ETAdditionsSettings.scoreboardTotals)
             this.server.getPlayerManager().sendToAll(this.scoreboardTotalPacket(score.getObjective()));
     }
 
     @Inject(method = "createChangePackets", at = @At("TAIL"))
     public void initializeTotals(ScoreboardObjective objective, CallbackInfoReturnable<List<Packet<?>>> cir) {
-        if (RuleSettings.scoreboardTotals) {
+        if (ETAdditionsSettings.scoreboardTotals) {
             cir.getReturnValue().add(this.scoreboardTotalPacket(objective));
             this.server.getPlayerManager().sendToAll(this.scoreboardTotalPacket(objective));
         }

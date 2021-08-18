@@ -1,4 +1,4 @@
-package io.github.samipourquoi.endtech.helpers;
+package io.github.samipourquoi.endtech;
 
 import net.minecraft.network.packet.s2c.play.ScoreboardPlayerUpdateS2CPacket;
 import net.minecraft.scoreboard.ScoreboardObjective;
@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
-public class RuleSettings {
+public class ETAdditionsSettings {
     public static boolean scoreboardTotals;
     private static MinecraftServer server;
 
