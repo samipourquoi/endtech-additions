@@ -6,7 +6,11 @@
   "mixins": [
     "MixinBlock",
     "MixinStats",
-    "MixinItemStack"
+    "MixinItemStack",
+    "MixinScoreboardTotal",
+    "MixinCommandManager",
+    "MixinMinecraftServer",
+    "MixinServerStatHandler"
   ],
   "client": [
     "MixinMerchantScreen",
